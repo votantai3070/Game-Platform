@@ -1,14 +1,13 @@
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : Character
 {
+    [Header("Player Movement")]
     private Rigidbody2D rb;
     public LayerMask groundLayer;
     public Transform groundCheck;
     private Animator ani;
-    private SpriteRenderer spriteRenderer;
 
-    private float moveHorizontal;
     private bool jumpPressed;
     public float speed = 5f;
     public float jumpForce = 10f;
@@ -19,53 +18,53 @@ public class PlayerMovement : MonoBehaviour
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    protected override void Start()
     {
         rb = GetComponentInParent<Rigidbody2D>();
         ani = GetComponentInParent<Animator>();
-        spriteRenderer = GetComponentInParent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        moveHorizontal = Input.GetAxisRaw("Horizontal");
         jumpPressed = Input.GetButtonDown("Jump");
         Jump();
     }
 
-    private void FixedUpdate()
+    void FixedUpdate()
     {
-        Movement();
-
+        Vector2 direction = new Vector2(Input.GetAxisRaw("Horizontal"), 0);
+        Move(direction);
     }
-    private void Movement()
+
+
+    protected override void Move(Vector2 direction)
     {
         bool isAttack = ani.GetCurrentAnimatorStateInfo(0).IsTag("isAttack");
         bool isBlock = ani.GetCurrentAnimatorStateInfo(0).IsTag("isBlock");
 
-        if (moveHorizontal != 0)
+        if (direction.x != 0)
         {
-            transform.parent.localScale = new Vector3(Mathf.Sign(moveHorizontal), 1, 1);
+            transform.parent.localScale = new Vector3(Mathf.Sign(direction.x), 1, 1);
         }
 
         // If the player is attacking, slow down the movement speed
         if (isAttack)
         {
-            rb.linearVelocity = new Vector2(moveHorizontal * slowSpeed, rb.linearVelocity.y);
+            rb.linearVelocity = new Vector2(direction.x * slowSpeed, rb.linearVelocity.y);
         }
         else if (isBlock)
         {
-            rb.linearVelocity = new Vector2(moveHorizontal * blockSpeed, rb.linearVelocity.y);
+            rb.linearVelocity = new Vector2(direction.x * blockSpeed, rb.linearVelocity.y);
         }
         else
         {
-            rb.linearVelocity = new Vector2(moveHorizontal * speed, rb.linearVelocity.y);
+            rb.linearVelocity = new Vector2(direction.x * speed, rb.linearVelocity.y);
         }
 
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+        ani.SetFloat("isRunning", Mathf.Abs(direction.x));
 
-        ani.SetFloat("isRunning", Mathf.Abs(moveHorizontal));
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
     }
 
     private void Jump()

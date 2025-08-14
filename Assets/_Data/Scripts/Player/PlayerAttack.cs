@@ -1,27 +1,64 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Player))]
+[RequireComponent(typeof(Weapon))]
 public class PlayerAttack : MonoBehaviour
 {
+    private Player player;
     private Animator anim;
-    public CapsuleCollider2D attack1;
+    public CapsuleCollider2D attackCollider;
+    private Weapon weapon;
 
+    [Header("Combo Settings")]
     private int comboIndex = 0;
     public float comboDelay = 0.5f;
     private float lastAttackTime;
 
-
-    void Start()
+    private void Awake()
     {
+        player = GetComponent<Player>();
+        weapon = GetComponent<Weapon>();
         anim = GetComponentInParent<Animator>();
-        attack1.enabled = false;
+        attackCollider.enabled = false;
+        weapon.Init(player);
     }
+
 
     void Update()
     {
-        AnimationAttack();
+        HandleAttackInput();
     }
 
-    private void AnimationAttack()
+
+    private void Attack(IDamageable target)
+    {
+        if (weapon == null) return;
+        Debug.Log($"Attacking {target?.GetType().Name} with weapon: {weapon?.weaponData.weaponName}");
+        weapon.UseWeapon(target);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!attackCollider.enabled) return;
+
+        if (collision.CompareTag("Enemy"))
+        {
+            if (collision.TryGetComponent<IDamageable>(out IDamageable damageable))
+            {
+                Debug.Log("Damage: " + damageable);
+                Attack(damageable);
+            }
+
+        }
+    }
+
+    // Weapon setter method to change the weapon dynamically
+    public void SetWeapon(Weapon newWeapon)
+    {
+        weapon = newWeapon;
+    }
+
+    private void HandleAttackInput()
     {
         if (Input.GetMouseButtonDown(0))
         {
@@ -63,12 +100,12 @@ public class PlayerAttack : MonoBehaviour
 
     public void EnableAttackCollider()
     {
-        attack1.enabled = true;
+        attackCollider.enabled = true;
     }
 
     public void DisableAttackCollider()
     {
-        attack1.enabled = false;
+        attackCollider.enabled = false;
     }
 
 }

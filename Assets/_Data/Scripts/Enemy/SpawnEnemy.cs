@@ -1,9 +1,7 @@
 using UnityEngine;
 
-public class SpawnEnemy : MonoBehaviour
+public class SpawnEnemy : Spawner
 {
-    public GameObject enemyPrefab;
-    public Transform spawnPoint;
     public Transform point1;
     public Transform point2;
 
@@ -15,10 +13,9 @@ public class SpawnEnemy : MonoBehaviour
     }
 
 
-    private void Spawn()
+    protected override void OnOjectSpawned(GameObject spawnedEnemy)
     {
-        GameObject enemy = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
-        EnemyMovement enemyMovement = enemy.GetComponentInChildren<EnemyMovement>();
+        SlimeEnemyMovement enemyMovement = spawnedEnemy.GetComponentInChildren<SlimeEnemyMovement>();
         enemyMovement.SetPoints(point1, point2);
     }
 }
