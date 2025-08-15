@@ -1,12 +1,13 @@
 using UnityEngine;
 
-public class Character : MonoBehaviour, IDamageable
+public abstract class Character : MonoBehaviour, IDamageable
 {
     public enum CharacterType
     {
         Player,
         Enemy,
-        NPC
+        NPC,
+        Bosses,
     }
 
     [Header("Character Info")]
@@ -45,9 +46,5 @@ public class Character : MonoBehaviour, IDamageable
         }
     }
 
-    protected virtual void Die()
-    {
-        Destroy(gameObject);
-    }
-
+    protected abstract void Die();
 }

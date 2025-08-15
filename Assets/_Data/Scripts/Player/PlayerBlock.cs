@@ -5,7 +5,6 @@ public class PlayerBlock : MonoBehaviour
     [SerializeField] private BoxCollider2D boxCollider2D;
     private Animator anim;
 
-    private float blockDuration = 0.1f;
 
     private void Start()
     {
@@ -40,7 +39,7 @@ public class PlayerBlock : MonoBehaviour
 
     public void BlockedEnemy()
     {
-        anim.SetBool("isBlocking", false);
         anim.SetTrigger("isBlockedEnemy");
+        HandleBlock();
     }
 }

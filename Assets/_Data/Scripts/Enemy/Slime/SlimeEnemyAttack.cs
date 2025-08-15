@@ -35,6 +35,15 @@ public class SlimeEnemyAttack : MonoBehaviour
                 Attack(damageable);
             }
         }
+        if (collision.CompareTag("PlayerBlock"))
+        {
+            var playerBlock = collision.GetComponentInParent<PlayerBlock>();
+            if (playerBlock != null)
+            {
+                Debug.Log("playerBlock (parent): " + playerBlock);
+                playerBlock.BlockedEnemy();
+            }
+        }
     }
 
 

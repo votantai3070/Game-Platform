@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerMovement : Character
@@ -17,6 +18,8 @@ public class PlayerMovement : Character
     [SerializeField] private float blockSpeed = 0.5f;
 
 
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected override void Start()
     {
@@ -29,6 +32,7 @@ public class PlayerMovement : Character
     {
         jumpPressed = Input.GetButtonDown("Jump");
         Jump();
+
     }
 
     void FixedUpdate()
@@ -82,5 +86,10 @@ public class PlayerMovement : Character
         {
             ani.SetBool("isJumping", false);
         }
+    }
+
+    protected override void Die()
+    {
+        throw new System.NotImplementedException();
     }
 }

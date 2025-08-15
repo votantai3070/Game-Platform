@@ -2,10 +2,9 @@ using UnityEngine;
 
 public class Slime : Character
 {
-    protected override void Start()
+    protected override void Die()
     {
-        base.Start();
+        Destroy(gameObject);
     }
-
 
 }

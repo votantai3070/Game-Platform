@@ -19,7 +19,7 @@ public abstract class Spawner : MonoBehaviour
 
     protected abstract void OnOjectSpawned(GameObject spawnedObject);
 
-    public void Spawn()
+    protected void Spawn()
     {
         GameObject spawnedObject = SpawnPrefab();
         if (spawnedObject != null)
