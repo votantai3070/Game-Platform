@@ -74,7 +74,9 @@
     <Compile Include="Assets\Hero Knight - Pixel Art\Demo\Sensor_HeroKnight.cs" />
     <Compile Include="Assets\_Data\Scripts\Enemy\Slime\SlimeEnemyMovement.cs" />
     <Compile Include="Assets\_Data\Scripts\ScriptableObject\WeaponData.cs" />
+    <Compile Include="Assets\_Data\Scripts\GameManager.cs" />
     <Compile Include="Assets\Anogame\MonsterGirls\MonsterGirlsCommon\Scripts\DemoCharaAnimationPlayer.cs" />
+    <Compile Include="Assets\_Data\Scripts\Player\SpawnPlayer.cs" />
     <Compile Include="Assets\_Data\Scripts\Player\PlayerAttack.cs" />
     <Compile Include="Assets\_Data\Scripts\Enemy\BossMap1\Boss.cs" />
     <Compile Include="Assets\_Data\Scripts\Enemy\Slime\SlimeEnemyAttack.cs" />

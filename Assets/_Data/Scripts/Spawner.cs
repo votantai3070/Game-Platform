@@ -1,10 +1,11 @@
 using UnityEngine;
 
-public abstract class Spawner : MonoBehaviour
+public class Spawner : MonoBehaviour
 {
     [Header("Spawn Settings")]
     public GameObject prefabToSpawn;
     public Transform spawnPoint;
+    protected GameObject spawner;
 
     protected virtual GameObject SpawnPrefab()
     {
@@ -14,10 +15,11 @@ public abstract class Spawner : MonoBehaviour
             return null;
         }
 
-        return Instantiate(prefabToSpawn, spawnPoint.position, Quaternion.identity);
+        return spawner = Instantiate(prefabToSpawn, spawnPoint.position, Quaternion.identity);
     }
 
-    protected abstract void OnOjectSpawned(GameObject spawnedObject);
+
+    protected virtual void OnOjectSpawned(GameObject spawnedObject) { }
 
     protected void Spawn()
     {

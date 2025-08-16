@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Boss : Character
@@ -12,6 +13,10 @@ public class Boss : Character
     private float detectedRange = 10f;
     private Transform detectedPoint;
     public LayerMask detectedLayer;
+    private int attackIndex;
+    private float attackDelay = 2f;
+    //private float lastTimeAttack;
+    private bool isAttacking = false;
 
 
     private void Awake()
@@ -35,31 +40,48 @@ public class Boss : Character
     {
         Vector2 direction = (target.position - transform.position).normalized;
         Move(direction);
+        HandleAttack();
+    }
+
+    private void HandleAttack()
+    {
+        switch (attackIndex)
+        {
+            case 0:
+                anim.SetBool("isAttacking", false);
+                break;
+            case 1:
+                if (!isAttacking)
+                    StartCoroutine(NormalAttack());
+                break;
+                //case 2:
+
+        }
     }
 
     protected override void Move(Vector2 direction)
     {
         Collider2D hit = Physics2D.OverlapCircle(detectedPoint.position, detectedRange, detectedLayer);
 
-        if (Vector3.Distance(transform.position, target.position) < 3f)
+        if (hit != null)
         {
-            anim.SetBool("isAttacking", true);
-            anim.SetTrigger("isAttack");
-        }
-        else
-        {
-            if (hit != null)
-            {
-                transform.position += (Vector3)direction * characterData.speed * Time.deltaTime;
+            float distance = Vector3.Distance(transform.position, target.position);
 
-                anim.SetFloat("isRunning", 1f);
+            if (distance < 4f)
+            {
+                anim.SetFloat("isRunning", 0);
+                attackIndex = 1;
             }
             else
             {
-                anim.SetFloat("isRunning", 0);
-
+                anim.SetFloat("isRunning", 1f);
+                rb.linearVelocity = characterData.speed * (Vector3)direction;
             }
-
+        }
+        else
+        {
+            attackIndex = 0;
+            anim.SetFloat("isRunning", 0);
         }
 
         Flip(direction);
@@ -87,6 +109,17 @@ public class Boss : Character
                 Attack(damageable);
             }
         }
+    }
+
+    IEnumerator NormalAttack()
+    {
+        isAttacking = true;
+
+        anim.SetBool("isAttacking", true);
+        anim.SetTrigger("isAttack");
+
+        yield return new WaitForSeconds(attackDelay);
+        isAttacking = false;
     }
 
     public void ActiveCollision()

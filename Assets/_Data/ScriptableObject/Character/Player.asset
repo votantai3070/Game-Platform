@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Player
   m_EditorClassIdentifier: 
   characterName: Player
-  maxHealth: 20
+  maxHealth: 100
   damage: 1
   speed: 10
