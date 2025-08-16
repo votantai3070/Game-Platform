@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 public class Boss : Character
@@ -17,6 +17,7 @@ public class Boss : Character
     private float attackDelay = 2f;
     //private float lastTimeAttack;
     private bool isAttacking = false;
+    private bool isAttackingSpelled = false;
 
 
     private void Awake()
@@ -49,12 +50,15 @@ public class Boss : Character
         {
             case 0:
                 anim.SetBool("isAttacking", false);
+                anim.SetBool("isAttackingSpell", false);
                 break;
             case 1:
                 if (!isAttacking)
                     StartCoroutine(NormalAttack());
                 break;
-                //case 2:
+            case 2:
+                if (!isAttackingSpelled) StartCoroutine(SpellAttack());
+                break;
 
         }
     }
@@ -70,12 +74,18 @@ public class Boss : Character
             if (distance < 4f)
             {
                 anim.SetFloat("isRunning", 0);
-                attackIndex = 1;
+
+                if (!isAttacking && !isAttackingSpelled)
+                {
+                    attackIndex = Random.Range(1, 3); // 1: normal, 2: spell
+                }
             }
             else
             {
                 anim.SetFloat("isRunning", 1f);
+
                 rb.linearVelocity = characterData.speed * (Vector3)direction;
+                attackIndex = 0;
             }
         }
         else
@@ -106,6 +116,7 @@ public class Boss : Character
         {
             if (collision.TryGetComponent<IDamageable>(out var damageable))
             {
+                Debug.Log("damageable: " + damageable);
                 Attack(damageable);
             }
         }
@@ -114,12 +125,27 @@ public class Boss : Character
     IEnumerator NormalAttack()
     {
         isAttacking = true;
-
-        anim.SetBool("isAttacking", true);
-        anim.SetTrigger("isAttack");
-
+        if (isAttacking)
+        {
+            anim.SetBool("isAttacking", true);
+            anim.SetTrigger("isAttack");
+        }
         yield return new WaitForSeconds(attackDelay);
         isAttacking = false;
+    }
+
+    IEnumerator SpellAttack()
+    {
+        isAttackingSpelled = true;
+        if (isAttackingSpelled)
+        {
+            anim.SetBool("isAttackingSpell", true);
+            anim.SetTrigger("isAttackSpell");
+        }
+
+        yield return new WaitForSeconds(attackDelay);
+        isAttackingSpelled = false;
+
     }
 
     public void ActiveCollision()
@@ -132,8 +158,26 @@ public class Boss : Character
         capsuleCollider.enabled = false;
     }
 
+    public void ResetAnimNormalAttack()
+    {
+        anim.SetBool("isAttacking", false);
+    }
+    public void ResetAnimSpellAttack()
+    {
+        anim.SetBool("isAttacking", false);
+    }
+
+
     protected override void Die()
     {
-        throw new System.NotImplementedException();
+        StartCoroutine(WaitAnimDeadForSecond());
+    }
+
+    IEnumerator WaitAnimDeadForSecond()
+    {
+        anim.SetTrigger("isDead");
+        yield return new WaitForSeconds(3);
+
+        Destroy(gameObject);
     }
 }

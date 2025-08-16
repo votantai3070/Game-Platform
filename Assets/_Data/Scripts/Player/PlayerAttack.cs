@@ -50,6 +50,16 @@ public class PlayerAttack : MonoBehaviour
             }
 
         }
+        else
+        if (collision.CompareTag("Boss"))
+        {
+            if (collision.TryGetComponent<IDamageable>(out IDamageable damageable))
+            {
+                Debug.Log("Damage: " + damageable);
+                Attack(damageable);
+            }
+
+        }
     }
 
     // Weapon setter method to change the weapon dynamically

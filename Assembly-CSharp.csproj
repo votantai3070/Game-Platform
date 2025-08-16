@@ -78,6 +78,7 @@
     <Compile Include="Assets\Anogame\MonsterGirls\MonsterGirlsCommon\Scripts\DemoCharaAnimationPlayer.cs" />
     <Compile Include="Assets\_Data\Scripts\Player\SpawnPlayer.cs" />
     <Compile Include="Assets\_Data\Scripts\Player\PlayerAttack.cs" />
+    <Compile Include="Assets\_Data\Scripts\Enemy\BossMap1\ResetAnimationBoss.cs" />
     <Compile Include="Assets\_Data\Scripts\Enemy\BossMap1\Boss.cs" />
     <Compile Include="Assets\_Data\Scripts\Enemy\Slime\SlimeEnemyAttack.cs" />
     <Compile Include="Assets\Hero Knight - Pixel Art\ColorSwap\ColorSwap_HeroKnight.cs" />
