@@ -56,5 +56,8 @@ TagManager:
   - name: Enemy
     uniqueID: 243835945
     locked: 0
+  - name: Spell
+    uniqueID: 2031070049
+    locked: 0
   m_RenderingLayers:
   - Default

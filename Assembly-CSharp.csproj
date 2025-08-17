@@ -67,6 +67,7 @@
     <Compile Include="Assets\_Data\Scripts\Interfaces\IDamageable.cs" />
     <Compile Include="Assets\Anogame\MonsterGirls\MonsterGirlsCommon\Scripts\DemoPlayChara.cs" />
     <Compile Include="Assets\Hero Knight - Pixel Art\Demo\HeroKnight.cs" />
+    <Compile Include="Assets\_Data\Scripts\ScriptableObject\SpellData.cs" />
     <Compile Include="Assets\_Data\Scripts\Enemy\SpawnBoss.cs" />
     <Compile Include="Assets\_Data\Scripts\ScriptableObject\CharacterData.cs" />
     <Compile Include="Assets\Anogame\MonsterGirls\MonsterGirlsCommon\Scripts\OverrideSprite.cs" />
@@ -74,8 +75,10 @@
     <Compile Include="Assets\Hero Knight - Pixel Art\Demo\Sensor_HeroKnight.cs" />
     <Compile Include="Assets\_Data\Scripts\Enemy\Slime\SlimeEnemyMovement.cs" />
     <Compile Include="Assets\_Data\Scripts\ScriptableObject\WeaponData.cs" />
+    <Compile Include="Assets\_Data\Scripts\Spell\Spell.cs" />
     <Compile Include="Assets\_Data\Scripts\GameManager.cs" />
     <Compile Include="Assets\Anogame\MonsterGirls\MonsterGirlsCommon\Scripts\DemoCharaAnimationPlayer.cs" />
+    <Compile Include="Assets\_Data\Scripts\Spell\DarkSpell.cs" />
     <Compile Include="Assets\_Data\Scripts\Player\SpawnPlayer.cs" />
     <Compile Include="Assets\_Data\Scripts\Player\PlayerAttack.cs" />
     <Compile Include="Assets\_Data\Scripts\Enemy\BossMap1\ResetAnimationBoss.cs" />

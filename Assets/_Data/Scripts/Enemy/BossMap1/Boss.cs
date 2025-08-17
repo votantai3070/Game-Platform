@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Boss : Character
@@ -9,8 +10,11 @@ public class Boss : Character
     private Player player;
 
     [SerializeField] private Weapon bossWeapon;
+    public GameObject spellPrefab;
+
+    [SerializeField] private float spellOffsetY = 4f;
     private Transform target;
-    private float detectedRange = 10f;
+    private float detectedRange = 15f;
     private Transform detectedPoint;
     public LayerMask detectedLayer;
     private int attackIndex;
@@ -67,17 +71,24 @@ public class Boss : Character
     {
         Collider2D hit = Physics2D.OverlapCircle(detectedPoint.position, detectedRange, detectedLayer);
 
+        int random = Random.Range(1, 3);
         if (hit != null)
         {
             float distance = Vector3.Distance(transform.position, target.position);
-
-            if (distance < 4f)
+            if (distance < 15f && distance > 10f)
+            {
+                if (!isAttackingSpelled && random == 2)
+                {
+                    attackIndex = random;
+                }
+            }
+            else if (distance <= 10f)
             {
                 anim.SetFloat("isRunning", 0);
 
                 if (!isAttacking && !isAttackingSpelled)
                 {
-                    attackIndex = Random.Range(1, 3); // 1: normal, 2: spell
+                    attackIndex = random; // 1: normal, 2: spell
                 }
             }
             else
@@ -103,10 +114,20 @@ public class Boss : Character
         else if (direction.x < 0) transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), 1, 1);
     }
 
+    public void CastSpell()
+    {
+        if (target == null) return;
+
+        Vector3 strikePos = new(target.position.x, target.position.y + spellOffsetY, 0);
+
+        Instantiate(spellPrefab, strikePos, Quaternion.identity);
+    }
+
     protected override void Attack(IDamageable target)
     {
         bossWeapon.UseWeapon(target);
     }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -164,7 +185,7 @@ public class Boss : Character
     }
     public void ResetAnimSpellAttack()
     {
-        anim.SetBool("isAttacking", false);
+        anim.SetBool("isAttackingSpell", false);
     }
 
 
