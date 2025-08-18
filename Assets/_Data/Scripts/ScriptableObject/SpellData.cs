@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewSpellData", menuName = "Spell/SpellData")]
-public class SpellData : MonoBehaviour
+public class SpellData : ScriptableObject
 {
     public string spellName;
     public int damage;

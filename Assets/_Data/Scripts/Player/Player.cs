@@ -2,12 +2,25 @@ using UnityEngine;
 
 public class Player : Character
 {
+    public static Player instance;
     private Animator _animator;
-    private bool _isPlaying;
+    private CircleCollider2D _circleCollider;
 
     private void Awake()
     {
+        instance = this;
         _animator = GetComponent<Animator>();
+        _circleCollider = GetComponent<CircleCollider2D>();
+    }
+
+    public void ActiveCircleCollision()
+    {
+        _circleCollider.enabled = true;
+    }
+
+    public void InactiveCircleCollision()
+    {
+        _circleCollider.enabled = false;
     }
 
     protected override void Die()
@@ -27,5 +40,4 @@ public class Player : Character
         rb.linearVelocity = Vector2.zero;
 
     }
-
 }

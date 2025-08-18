@@ -34,7 +34,6 @@ public class Boss : Character
         bossWeapon.Init(this);
         if (player != null)
         {
-            Debug.Log("Player: " + player);
             target = player.transform;
         }
     }
