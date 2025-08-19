@@ -1,0 +1,55 @@
+🎮 Gameplay chính
+
+Player
+
+Thêm tấn công đặc biệt/skill (ví dụ: đánh xoáy, bắn đạn, ulti khi đủ mana).
+
+Máu, mana, stamina (dùng để quản lý tấn công, né, dash…).
+
+Item pickup (hồi máu, hồi mana, tăng sức mạnh tạm thời).
+
+UI hiển thị: thanh máu, thanh mana, số mạng, số coin/point.
+
+Enemy
+
+Có nhiều loại enemy khác nhau (bay, đánh xa, đánh gần, mạnh hơn bình thường).
+
+Drop item khi chết (máu, coin, exp…).
+
+Boss
+
+Thêm nhiều phase (khi còn 50% HP thì đổi skill, tốc độ hoặc pattern).
+
+Skill phép đa dạng hơn (AOE, bắn nhiều tia, tạo minion…).
+
+🗺️ Hệ thống & môi trường
+
+Map/Level
+
+Thêm chướng ngại vật (gai, bẫy, hố rơi, lava...).
+
+Cửa, checkpoint hoặc nhiều màn chơi khác nhau.
+
+Camera
+
+Camera follow mượt + giới hạn trong map/boss room.
+
+🧩 Hệ thống mở rộng
+
+Scoring/Level system: Điểm, exp, lên level tăng damage/hp.
+
+Inventory: Nhặt item, vũ khí, thay đổi trang bị.
+
+Save/Load: Lưu trạng thái game, load lại.
+
+Pause menu + Settings: Âm thanh, nút điều khiển, độ khó.
+
+✨ Thêm để game hấp dẫn
+
+Hiệu ứng: Animation trúng đòn, critical hit, flash screen khi boss ulti.
+
+Âm thanh: Nhạc nền, sound effect (chạy, nhảy, đánh, boss skill).
+
+Cutscene/Story nhỏ: Giới thiệu boss, kết thúc khi thắng.
+
+UI game over / victory: Retry, back to menu.

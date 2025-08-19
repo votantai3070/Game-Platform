@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class Character : MonoBehaviour, IDamageable
 {
@@ -14,6 +15,7 @@ public abstract class Character : MonoBehaviour, IDamageable
     public CharacterData characterData;
     public CharacterType characterType;
     protected int currentHealth;
+    public Slider characterHealthBar;
 
     public int Damage => characterData.damage;
 
@@ -25,6 +27,11 @@ public abstract class Character : MonoBehaviour, IDamageable
             return;
         }
         currentHealth = characterData.maxHealth;
+        if (characterHealthBar != null)
+        {
+            characterHealthBar.maxValue = characterData.maxHealth;
+            characterHealthBar.value = currentHealth;
+        }
     }
 
     protected virtual void Move(Vector2 direction) { }
@@ -35,6 +42,11 @@ public abstract class Character : MonoBehaviour, IDamageable
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+
+        if (characterHealthBar != null)
+        {
+            characterHealthBar.value = currentHealth;
+        }
 
         Debug.Log($"{characterData.characterName} took {damage} damage. Current health: {currentHealth}");
 

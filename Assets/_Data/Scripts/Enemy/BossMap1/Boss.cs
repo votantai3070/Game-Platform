@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Boss : Character
 {
@@ -36,6 +37,7 @@ public class Boss : Character
         {
             target = player.transform;
         }
+        characterHealthBar = GameObject.Find("BossHealthBar").GetComponent<Slider>();
     }
 
 
