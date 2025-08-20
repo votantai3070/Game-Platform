@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: Boss
   m_EditorClassIdentifier: 
   characterName: Boss
-  maxHealth: 20
+  maxHealth: 50
   damage: 10
   speed: 5
+  stamina: 10
+  dogdeStamina: 0
+  blockStamina: 0
+  jumpStamina: 0

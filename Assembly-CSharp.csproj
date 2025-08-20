@@ -65,6 +65,7 @@
     <Compile Include="Assets\Hero Knight - Pixel Art\Demo\DestroyEvent_HeroKnight.cs" />
     <Compile Include="Assets\_Data\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\_Data\Scripts\Interfaces\IDamageable.cs" />
+    <Compile Include="Assets\_Data\Scripts\Interfaces\IHealth.cs" />
     <Compile Include="Assets\Anogame\MonsterGirls\MonsterGirlsCommon\Scripts\DemoPlayChara.cs" />
     <Compile Include="Assets\Hero Knight - Pixel Art\Demo\HeroKnight.cs" />
     <Compile Include="Assets\_Data\Scripts\ScriptableObject\SpellData.cs" />
@@ -84,13 +85,16 @@
     <Compile Include="Assets\_Data\Scripts\Enemy\BossMap1\ResetAnimationBoss.cs" />
     <Compile Include="Assets\_Data\Scripts\Enemy\BossMap1\Boss.cs" />
     <Compile Include="Assets\_Data\Scripts\Enemy\Slime\SlimeEnemyAttack.cs" />
+    <Compile Include="Assets\_Data\Scripts\Player\PlayerStamina.cs" />
     <Compile Include="Assets\Hero Knight - Pixel Art\ColorSwap\ColorSwap_HeroKnight.cs" />
     <Compile Include="Assets\_Data\Scripts\Character\Character.cs" />
     <Compile Include="Assets\_Data\Scripts\Player\PlayerBlock.cs" />
     <Compile Include="Assets\_Data\Scripts\Enemy\Slime\Slime.cs" />
     <Compile Include="Assets\Anogame\MonsterGirls\MonsterGirlsCommon\Scripts\CharaController.cs" />
     <Compile Include="Assets\_Data\Scripts\Spawner.cs" />
+    <Compile Include="Assets\_Data\Scripts\Enemy\BossMap1\BossAttack.cs" />
     <Compile Include="Assets\_Data\Scripts\Enemy\SpawnEnemy.cs" />
+    <Compile Include="Assets\_Data\Scripts\Interfaces\IStaminable.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Bringer Of Death\License.txt" />

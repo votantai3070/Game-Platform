@@ -32,7 +32,7 @@ public class PlayerMovement : Character
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         DirectionPlayer();
         jumpPressed = Input.GetButtonDown("Jump");
@@ -60,7 +60,6 @@ public class PlayerMovement : Character
             transform.parent.localScale = new Vector3(Mathf.Sign(direction.x), 1, 1);
         }
 
-        // If the player is attacking, slow down the movement speed
         if (isAttack)
         {
             rb.linearVelocity = new Vector2(direction.x * slowSpeed, rb.linearVelocity.y);
@@ -81,9 +80,9 @@ public class PlayerMovement : Character
 
     private void Dash(Vector2 direction)
     {
-        Debug.Log("Dashing: " + isDashing);
-        if (Input.GetKeyDown(KeyCode.LeftShift) && !isDashing && isGrounded)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && !isDashing && isGrounded && PlayerStamina.Instance.CurrentStamina >= characterData.dogdeStamina)
         {
+            PlayerStamina.Instance.UseStamina(characterData.dogdeStamina);
             StartCoroutine(PLayerDashing(direction));
         }
     }

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public abstract class Character : MonoBehaviour, IDamageable
+public abstract class Character : MonoBehaviour, IDamageable, IHealth
 {
     public enum CharacterType
     {
@@ -14,8 +14,10 @@ public abstract class Character : MonoBehaviour, IDamageable
     [Header("Character Info")]
     public CharacterData characterData;
     public CharacterType characterType;
-    protected int currentHealth;
     public Slider characterHealthBar;
+
+    public int CurrentHealth { get; set; }
+    public int MaxHealth { get; private set; }
 
     public int Damage => characterData.damage;
 
@@ -26,12 +28,19 @@ public abstract class Character : MonoBehaviour, IDamageable
             Debug.LogError("CharacterData is not assigned for " + gameObject.name);
             return;
         }
-        currentHealth = characterData.maxHealth;
+
+        MaxHealth = characterData.maxHealth;
+
+        CurrentHealth = MaxHealth;
+
+
         if (characterHealthBar != null)
         {
             characterHealthBar.maxValue = characterData.maxHealth;
-            characterHealthBar.value = currentHealth;
+            characterHealthBar.value = CurrentHealth;
         }
+
+        Debug.Log($"{gameObject.name} MaxHealth = {MaxHealth}, CurrentHealth = {CurrentHealth}");
     }
 
     protected virtual void Move(Vector2 direction) { }
@@ -41,22 +50,21 @@ public abstract class Character : MonoBehaviour, IDamageable
 
     public void TakeDamage(int damage)
     {
-        currentHealth -= damage;
+        CurrentHealth -= damage;
 
         if (characterHealthBar != null)
         {
-            characterHealthBar.value = currentHealth;
+            characterHealthBar.value = CurrentHealth;
         }
 
-        Debug.Log($"{characterData.characterName} took {damage} damage. Current health: {currentHealth}");
+        CurrentHealth = Mathf.Clamp(CurrentHealth, 0, characterData.maxHealth);
 
-        currentHealth = Mathf.Clamp(currentHealth, 0, characterData.maxHealth);
-
-        if (currentHealth <= 0)
+        if (CurrentHealth <= 0)
         {
             Die();
         }
     }
 
     protected abstract void Die();
+
 }

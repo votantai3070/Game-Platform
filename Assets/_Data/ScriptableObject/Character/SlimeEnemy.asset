@@ -16,3 +16,7 @@ MonoBehaviour:
   maxHealth: 20
   damage: 2
   speed: 2
+  stamina: 0
+  dogdeStamina: 1000
+  blockStamina: 0
+  jumpStamina: 0

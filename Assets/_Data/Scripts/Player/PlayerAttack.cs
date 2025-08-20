@@ -45,7 +45,6 @@ public class PlayerAttack : MonoBehaviour
         {
             if (collision.TryGetComponent<IDamageable>(out IDamageable damageable))
             {
-                Debug.Log("Damage: " + damageable);
                 Attack(damageable);
             }
 
@@ -55,7 +54,6 @@ public class PlayerAttack : MonoBehaviour
         {
             if (collision.TryGetComponent<IDamageable>(out IDamageable damageable))
             {
-                Debug.Log("Damage: " + damageable);
                 Attack(damageable);
             }
 

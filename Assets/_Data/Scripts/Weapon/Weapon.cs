@@ -14,6 +14,11 @@ public class Weapon : MonoBehaviour
     }
     private void CalculateDamage()
     {
+        if (owner == null)
+        {
+            Debug.LogWarning("Owner is not set for the weapon. Cannot calculate damage.");
+            return;
+        }
         currentDamage = Damage + owner.Damage;
     }
 
