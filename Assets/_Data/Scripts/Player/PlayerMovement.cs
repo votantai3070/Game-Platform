@@ -47,7 +47,7 @@ public class PlayerMovement : Character
 
     void DirectionPlayer()
     {
-        direction = new Vector2(Input.GetAxisRaw("Horizontal"), 0);
+        direction = InputManager.Instance.GetHorizontalMovementInput();
     }
 
     protected override void Move(Vector2 direction)

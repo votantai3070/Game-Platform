@@ -40,7 +40,6 @@ public abstract class Character : MonoBehaviour, IDamageable, IHealth
             characterHealthBar.value = CurrentHealth;
         }
 
-        Debug.Log($"{gameObject.name} MaxHealth = {MaxHealth}, CurrentHealth = {CurrentHealth}");
     }
 
     protected virtual void Move(Vector2 direction) { }

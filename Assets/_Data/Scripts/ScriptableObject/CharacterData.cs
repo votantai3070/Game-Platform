@@ -9,6 +9,7 @@ public class CharacterData : ScriptableObject
     public float speed;
     public int stamina;
     public int dogdeStamina;
+    public int blockedStamina;
     public int blockStamina;
     public int jumpStamina;
 }

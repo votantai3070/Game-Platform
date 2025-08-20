@@ -98,6 +98,14 @@ public class BossAttack : Character
                 Attack(damageable);
             }
         }
+        if (collision.CompareTag("PlayerBlock"))
+        {
+            PlayerBlock playerBlock = collision.GetComponentInParent<PlayerBlock>();
+            if (playerBlock == null) return;
+            playerBlock.BlockedEnemy();
+            Debug.Log("Player Blocked Enemy");
+
+        }
     }
 
     protected override void Die()

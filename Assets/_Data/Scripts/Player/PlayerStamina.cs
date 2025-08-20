@@ -28,7 +28,6 @@ public class PlayerStamina : Player, IStaminable
             staminaBar.maxValue = MaxStamina;
             staminaBar.value = CurrentStamina;
         }
-        Debug.Log("CurrentStamina = " + CurrentStamina + ", MaxStamina = " + MaxStamina);
     }
 
     private void Update()
