@@ -61,46 +61,49 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.51f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\_Data\Scripts\Player\Player.cs" />
+    <Compile Include="Assets\_Data\Scripts\Character\Enemy\SpawnEnemy.cs" />
     <Compile Include="Assets\Hero Knight - Pixel Art\Demo\DestroyEvent_HeroKnight.cs" />
-    <Compile Include="Assets\_Data\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\_Data\Scripts\Interfaces\IDamageable.cs" />
+    <Compile Include="Assets\_Data\Scripts\Interfaces\IInventory.cs" />
+    <Compile Include="Assets\_Data\Scripts\Character\Enemy\Slime\SlimeEnemyMovement.cs" />
     <Compile Include="Assets\_Data\Scripts\Interfaces\IHealth.cs" />
     <Compile Include="Assets\Anogame\MonsterGirls\MonsterGirlsCommon\Scripts\DemoPlayChara.cs" />
     <Compile Include="Assets\Hero Knight - Pixel Art\Demo\HeroKnight.cs" />
     <Compile Include="Assets\_Data\Scripts\ScriptableObject\SpellData.cs" />
-    <Compile Include="Assets\_Data\Scripts\Enemy\SpawnBoss.cs" />
+    <Compile Include="Assets\_Data\Scripts\Character\Enemy\SpawnBoss.cs" />
+    <Compile Include="Assets\_Data\Scripts\Character\Enemy\BossMap1\Boss.cs" />
     <Compile Include="Assets\_Data\Scripts\ScriptableObject\CharacterData.cs" />
     <Compile Include="Assets\Anogame\MonsterGirls\MonsterGirlsCommon\Scripts\OverrideSprite.cs" />
+    <Compile Include="Assets\_Data\Scripts\Character\Enemy\BossMap1\ResetAnimationBoss.cs" />
     <Compile Include="Assets\_Data\Scripts\Weapon\Weapon.cs" />
     <Compile Include="Assets\Hero Knight - Pixel Art\Demo\Sensor_HeroKnight.cs" />
-    <Compile Include="Assets\_Data\Scripts\Enemy\Slime\SlimeEnemyMovement.cs" />
     <Compile Include="Assets\_Data\Scripts\ScriptableObject\WeaponData.cs" />
     <Compile Include="Assets\_Data\Scripts\InputManager.cs" />
+    <Compile Include="Assets\_Data\Scripts\Character\Player\PlayerStamina.cs" />
+    <Compile Include="Assets\_Data\Scripts\Character\Player\PlayerAttack.cs" />
+    <Compile Include="Assets\_Data\Scripts\Character\Enemy\BossMap1\BossAttack.cs" />
     <Compile Include="Assets\_Data\Scripts\Spell\Spell.cs" />
     <Compile Include="Assets\_Data\Scripts\GameManager.cs" />
+    <Compile Include="Assets\_Data\Scripts\Character\Enemy\Slime\SlimeEnemyAttack.cs" />
     <Compile Include="Assets\Anogame\MonsterGirls\MonsterGirlsCommon\Scripts\DemoCharaAnimationPlayer.cs" />
     <Compile Include="Assets\_Data\Scripts\Spell\DarkSpell.cs" />
     <Compile Include="Assets\_Data\Scripts\PickupUI.cs" />
-    <Compile Include="Assets\_Data\Scripts\Player\SpawnPlayer.cs" />
-    <Compile Include="Assets\_Data\Scripts\Player\PlayerAttack.cs" />
-    <Compile Include="Assets\_Data\Scripts\Enemy\BossMap1\ResetAnimationBoss.cs" />
-    <Compile Include="Assets\_Data\Scripts\Enemy\BossMap1\Boss.cs" />
-    <Compile Include="Assets\_Data\Scripts\Enemy\Slime\SlimeEnemyAttack.cs" />
-    <Compile Include="Assets\_Data\Scripts\Player\PlayerStamina.cs" />
     <Compile Include="Assets\Hero Knight - Pixel Art\ColorSwap\ColorSwap_HeroKnight.cs" />
     <Compile Include="Assets\_Data\Scripts\ScriptableObject\ItemData.cs" />
     <Compile Include="Assets\_Data\Scripts\Character\Character.cs" />
+    <Compile Include="Assets\_Data\Scripts\Inventory\Inventory.cs" />
+    <Compile Include="Assets\_Data\Scripts\Character\Player\PlayerBlock.cs" />
     <Compile Include="Assets\_Data\Scripts\Item\HealthPotion\HealthPotion.cs" />
     <Compile Include="Assets\_Data\Scripts\Item\HealthPotion\Collision.cs" />
-    <Compile Include="Assets\_Data\Scripts\Player\DetectedBoss.cs" />
-    <Compile Include="Assets\_Data\Scripts\Player\PlayerBlock.cs" />
-    <Compile Include="Assets\_Data\Scripts\Enemy\Slime\Slime.cs" />
     <Compile Include="Assets\Anogame\MonsterGirls\MonsterGirlsCommon\Scripts\CharaController.cs" />
+    <Compile Include="Assets\_Data\Scripts\Character\Player\Player.cs" />
+    <Compile Include="Assets\_Data\Scripts\Character\Player\SpawnPlayer.cs" />
+    <Compile Include="Assets\_Data\Scripts\Character\Player\PlayerMovement.cs" />
     <Compile Include="Assets\_Data\Scripts\Interfaces\IItem.cs" />
+    <Compile Include="Assets\_Data\Scripts\Character\Player\PlayerHeal.cs" />
+    <Compile Include="Assets\_Data\Scripts\Character\Enemy\Slime\Slime.cs" />
     <Compile Include="Assets\_Data\Scripts\Spawner.cs" />
-    <Compile Include="Assets\_Data\Scripts\Enemy\BossMap1\BossAttack.cs" />
-    <Compile Include="Assets\_Data\Scripts\Enemy\SpawnEnemy.cs" />
+    <Compile Include="Assets\_Data\Scripts\Character\Player\DetectedBoss.cs" />
     <Compile Include="Assets\_Data\Scripts\Interfaces\IStaminable.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -605,16 +608,16 @@
       <HintPath>Library\PackageCache\com.unity.ext.nunit@031a54704bff\net40\unity-custom\nunit.framework.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="DOTween">
+      <HintPath>Assets\Plugins\Demigiant\DOTween\DOTween.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
       <HintPath>Library\PackageCache\com.unity.visualscripting@6279e2b7c485\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Mono.Cecil">
       <HintPath>Library\PackageCache\com.unity.nuget.mono-cecil@d6f9955a5d5f\Mono.Cecil.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="DOTween">
-      <HintPath>Assets\Plugins\Demigiant\DOTween\DOTween.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="netstandard">

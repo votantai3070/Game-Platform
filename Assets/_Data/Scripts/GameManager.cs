@@ -1,33 +1,18 @@
-﻿using System.Collections;
-using Unity.Cinemachine;
+﻿using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
-    public CinemachineCamera cinemachine;
-
+    public GameObject bossHealth;
     private void Awake()
     {
-        instance = this;
+        //bossHealth.SetActive(false);
     }
 
-    public void CameraFollow(GameObject playerPrefab)
+    private void OnDestroy()
     {
-
-        StartCoroutine(SetFollowNextFrame(playerPrefab));
-    }
-
-    private IEnumerator SetFollowNextFrame(GameObject playerPrefab)
-    {
-        yield return null; // chờ 1 frame cho chắc
-        if (cinemachine != null)
-        {
-            cinemachine.Follow = playerPrefab.transform; // 👈 gán ở đây
-        }
-        else
-        {
-            Debug.LogError("CinemachineFollow component not found on the camera!");
-        }
+        DOTween.KillAll();
+        DOTween.Clear(true);
     }
 }

@@ -19,14 +19,12 @@ public class PickupUI : MonoBehaviour
 
     public void ShowPickupMessage(string message)
     {
-        Debug.Log("Enter");
         pickupText.text = message;
         pickupGroup.DOFade(1f, 0.3f);
     }
 
     public void HidePickupMessage()
     {
-        Debug.Log("Exit");
         pickupGroup.DOFade(0f, 0.3f).OnComplete(() => pickupText.text = "");
     }
 

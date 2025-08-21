@@ -137,3 +137,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bc460d3009ca8342b60ca9aedd6f2d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthPotionData: {fileID: 11400000, guid: 3f0178c3a65b9ef439f2482e12b05987, type: 2}

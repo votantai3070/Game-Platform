@@ -64,6 +64,16 @@ public abstract class Character : MonoBehaviour, IDamageable, IHealth
         }
     }
 
+    public void Heal(int amount)
+    {
+        CurrentHealth += amount;
+        if (characterHealthBar != null)
+        {
+            characterHealthBar.value = CurrentHealth;
+        }
+        CurrentHealth = Mathf.Clamp(CurrentHealth, 0, characterData.maxHealth);
+    }
+
     protected abstract void Die();
 
 }

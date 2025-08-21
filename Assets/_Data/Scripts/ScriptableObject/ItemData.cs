@@ -17,6 +17,8 @@ public class ItemData : ScriptableObject
         Miscellaneous
     }
     public bool isStackable;
-    public int maxStackSize = 99;
+    public int defaultStackSize = 3;
+    public int maxStackSize = 5;
+    public int itemAdditionalValue = 1;
     public GameObject itemPrefab;
 }

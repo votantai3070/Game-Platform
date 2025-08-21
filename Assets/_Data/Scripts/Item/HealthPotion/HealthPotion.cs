@@ -1,19 +1,19 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class HealthPotion : MonoBehaviour, IItem
 {
-    public static HealthPotion Instance { get; private set; }
     public GameObject healthPotionPrefab;
+    private Inventory inventory;
+    private Player player;
 
-    private bool isAnimating = false;
 
-    private void Awake()
+    private void Start()
     {
-        Instance = this;
-    }
+        inventory = FindAnyObjectByType<Inventory>();
+        player = FindAnyObjectByType<Player>();
 
+    }
 
     public void DropItem(Transform target)
     {
@@ -35,12 +35,20 @@ public class HealthPotion : MonoBehaviour, IItem
 
     public void UseItem()
     {
-        throw new System.NotImplementedException();
+        if (inventory.HealthPotions <= 0)
+            return;
+
+        inventory.HealthPotions--;
+
+        if (inventory.healthPotionText != null)
+            inventory.healthPotionText.text = inventory.HealthPotions.ToString();
+
+        if (player != null)
+            player.Heal(inventory.healthPotionData.itemValue);
     }
 
     IEnumerator AnimationPotion(GameObject potion)
     {
-        isAnimating = true;
         Vector2 startPosition = potion.transform.position;
         Vector2 endPosition = new Vector2(startPosition.x, startPosition.y + 0.5f);
         float elapsedTime = 0f;
@@ -51,6 +59,5 @@ public class HealthPotion : MonoBehaviour, IItem
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        isAnimating = false;
     }
 }

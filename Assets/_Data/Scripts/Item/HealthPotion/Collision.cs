@@ -3,21 +3,35 @@ using UnityEngine;
 public class Collision : MonoBehaviour
 {
     private Transform player;
+    public ItemData healthPotionData;
     private bool playerRange = false;
     private float playerRangeDistance = 1.5f;
+    public HealthPotion healthPotion;
+
+    private void Start()
+    {
+        healthPotion = FindAnyObjectByType<HealthPotion>();
+    }
 
     private void Update()
+    {
+        PickUpPotion();
+    }
+
+    void PickUpPotion()
     {
         if (player == null)
         {
             return;
         }
         float distance = Vector2.Distance(player.position, transform.position);
-        Debug.Log($"Distance to player: {distance}");
+        Inventory inventory = player.GetComponent<Inventory>();
         if (playerRange && Input.GetKeyDown(KeyCode.E) && playerRangeDistance >= distance)
         {
-            HealthPotion.Instance.TakeItem(gameObject);
+            healthPotion.TakeItem(gameObject);
+            inventory.AddHealthPotion(healthPotionData.itemAdditionalValue);
         }
+
     }
 
     void OnTriggerEnter2D(Collider2D collision)
