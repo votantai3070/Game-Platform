@@ -66,6 +66,7 @@
     <Compile Include="Assets\_Data\Scripts\Interfaces\IDamageable.cs" />
     <Compile Include="Assets\_Data\Scripts\Interfaces\IInventory.cs" />
     <Compile Include="Assets\_Data\Scripts\Character\Enemy\Slime\SlimeEnemyMovement.cs" />
+    <Compile Include="Assets\_Data\Scripts\Character\Enemy\BossMap1\ReCallSlimeEnemy.cs" />
     <Compile Include="Assets\_Data\Scripts\Interfaces\IHealth.cs" />
     <Compile Include="Assets\Anogame\MonsterGirls\MonsterGirlsCommon\Scripts\DemoPlayChara.cs" />
     <Compile Include="Assets\Hero Knight - Pixel Art\Demo\HeroKnight.cs" />
@@ -103,6 +104,7 @@
     <Compile Include="Assets\_Data\Scripts\Character\Player\PlayerHeal.cs" />
     <Compile Include="Assets\_Data\Scripts\Character\Enemy\Slime\Slime.cs" />
     <Compile Include="Assets\_Data\Scripts\Spawner.cs" />
+    <Compile Include="Assets\_Data\Scripts\Camera\CameraFollow.cs" />
     <Compile Include="Assets\_Data\Scripts\Character\Player\DetectedBoss.cs" />
     <Compile Include="Assets\_Data\Scripts\Interfaces\IStaminable.cs" />
   </ItemGroup>

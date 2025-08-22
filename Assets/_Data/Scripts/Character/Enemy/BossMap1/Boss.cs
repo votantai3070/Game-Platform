@@ -12,6 +12,7 @@ public class Boss : Character
     private Transform detectedPoint;
     private Transform target;
     private CapsuleCollider2D capsuleCollider;
+    private GameObject bossRoom;
     protected float detectedRange = 15f;
     public LayerMask detectedLayer;
 
@@ -29,20 +30,17 @@ public class Boss : Character
         }
         if (characterHealthBar == null)
             characterHealthBar = GameObject.Find("BossHealthBar").GetComponent<Slider>();
+        bossRoom = GameObject.Find("BossRoomPoint");
     }
-
     private void Update()
     {
         Vector2 direction = (target.position - transform.position).normalized;
         Move(direction);
     }
-
-
-
     protected override void Move(Vector2 direction)
     {
         Collider2D hit = Physics2D.OverlapCircle(detectedPoint.position, detectedRange, detectedLayer);
-        int random = Random.Range(1, 3);
+        int random = Random.Range(1, 4);
         if (hit != null)
         {
             float distance = Vector3.Distance(transform.position, target.position);
@@ -125,7 +123,7 @@ public class Boss : Character
     {
         anim.SetTrigger("isDead");
         yield return new WaitForSeconds(3);
-
+        Destroy(bossRoom);
         Destroy(gameObject);
     }
 }

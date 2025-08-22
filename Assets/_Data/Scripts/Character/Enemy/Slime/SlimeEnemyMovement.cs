@@ -8,6 +8,9 @@ public class SlimeEnemyMovement : MonoBehaviour
     public SpriteRenderer rightSprite;
     private Transform point1;
     private Transform point2;
+    public float detectionRadius = 5f;
+    public LayerMask detectedPlayer;
+    private GameObject player;
 
     private Vector3 targetPosition;
     private Animator anim;
@@ -22,44 +25,65 @@ public class SlimeEnemyMovement : MonoBehaviour
     private void Start()
     {
         slime = GetComponentInParent<Slime>();
+        player = GameObject.FindGameObjectWithTag("Player");
         anim = GetComponentInParent<Animator>();
     }
 
     private void FixedUpdate()
     {
         if (point1 == null || point2 == null) return;
+        DetectedTarget();
+    }
 
-        Vector2 dir = (targetPosition - transform.parent.position).normalized;
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.parent.position, detectionRadius);
+    }
+
+    private void DetectedTarget()
+    {
+        Vector2 dir;
+        Collider2D detected = Physics2D.OverlapCircle(transform.parent.position, detectionRadius, detectedPlayer);
+
+
+        if (detected != null)
+            dir = (player.transform.position - transform.parent.position).normalized;
+
+        else
+            dir = (targetPosition - transform.parent.position).normalized;
+
+
         Move(dir);
     }
 
     private void Move(Vector2 dir)
     {
-        transform.parent.position += (Vector3)dir * slime.characterData.speed * Time.deltaTime;
+        transform.parent.position += slime.characterData.speed * Time.deltaTime * (Vector3)dir;
+
 
         if (Vector3.Distance(transform.parent.position, targetPosition) < 0.1f)
         {
-            // Switch target position
             targetPosition = targetPosition == point1.position ? point2.position : point1.position;
         }
 
-        // Move towards the target position
-        //transform.parent.position = Vector3.MoveTowards(currentPos, targetPosition, speed * Time.deltaTime);
-        FlipSprite();
+
+        FlipSprite(dir);
     }
 
 
 
-    private void FlipSprite()
+    private void FlipSprite(Vector3 dir)
     {
-        bool isMovingLeft = targetPosition == point1.position;
-
-        leftSprite.enabled = isMovingLeft;
-        rightSprite.enabled = !isMovingLeft;
-
-        anim.SetBool("isLeftRunning", isMovingLeft);
-        anim.SetBool("isRightRunning", !isMovingLeft);
-        anim.SetFloat("isRunLeft", isMovingLeft ? 1f : 0f);
-        anim.SetFloat("isRunRight", isMovingLeft ? 0f : 1f);
+        if (dir.x > 0)
+        {
+            leftSprite.enabled = false;
+            rightSprite.enabled = true;
+        }
+        else if (dir.x < 0)
+        {
+            leftSprite.enabled = true;
+            rightSprite.enabled = false;
+        }
     }
 }

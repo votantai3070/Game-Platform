@@ -16,6 +16,9 @@ public class BossAttack : Character
     [HideInInspector] public int attackIndex;
     private Player player;
     private Transform target;
+    public GameObject minionPrefab;
+    private bool isMinionSpawned = false;
+    public Transform createMinionPoint;
 
     private void Awake()
     {
@@ -52,7 +55,10 @@ public class BossAttack : Character
                 if (!isAttackingSpelled) StartCoroutine(SpellAttack());
                 Debug.Log("Spell Attack");
                 break;
-
+            case 3:
+                if (!isMinionSpawned) StartCoroutine(CreateMinions());
+                Debug.Log("Create Minions");
+                break;
         }
     }
 
@@ -81,6 +87,21 @@ public class BossAttack : Character
         isAttackingSpelled = false;
 
     }
+
+    IEnumerator CreateMinions()
+    {
+        isMinionSpawned = true;
+        if (isMinionSpawned)
+        {
+            ani.SetBool("isAttackingSpell", true);
+            ani.SetTrigger("isAttackSpell");
+            Instantiate(minionPrefab, createMinionPoint.position, Quaternion.identity);
+        }
+        yield return new WaitForSeconds(attackDelay);
+
+        isMinionSpawned = false;
+    }
+
     protected override void Attack(IDamageable target)
     {
         bossWeapon.UseWeapon(target);

@@ -21,7 +21,7 @@ public class Spawner : MonoBehaviour
 
     protected virtual void OnOjectSpawned(GameObject spawnedObject) { }
 
-    protected void Spawn()
+    public void Spawn()
     {
         GameObject spawnedObject = SpawnPrefab();
         if (spawnedObject != null)
