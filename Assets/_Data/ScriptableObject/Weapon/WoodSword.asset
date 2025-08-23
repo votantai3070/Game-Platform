@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Wood Sword
   damage: 1
+  criticalChance: 0.1
+  criticalMultiplier: 2

@@ -15,6 +15,7 @@ public abstract class Character : MonoBehaviour, IDamageable, IHealth
     public CharacterData characterData;
     public CharacterType characterType;
     public Slider characterHealthBar;
+    private DamagePopup damagePopup;
 
     public int CurrentHealth { get; set; }
     public int MaxHealth { get; private set; }
@@ -28,6 +29,8 @@ public abstract class Character : MonoBehaviour, IDamageable, IHealth
             Debug.LogError("CharacterData is not assigned for " + gameObject.name);
             return;
         }
+
+        damagePopup = FindAnyObjectByType<DamagePopup>();
 
         MaxHealth = characterData.maxHealth;
 
@@ -47,13 +50,20 @@ public abstract class Character : MonoBehaviour, IDamageable, IHealth
 
     protected virtual void Attack(IDamageable target) { }
 
-    public void TakeDamage(int damage)
+    protected virtual void CalculateDamage() { }
+
+    public void TakeDamage(int damage, bool isCrit)
     {
         CurrentHealth -= damage;
 
         if (characterHealthBar != null)
         {
             characterHealthBar.value = CurrentHealth;
+        }
+
+        if (damagePopup != null)
+        {
+            damagePopup.ShowDamage(transform.position, damage, isCrit);
         }
 
         CurrentHealth = Mathf.Clamp(CurrentHealth, 0, characterData.maxHealth);

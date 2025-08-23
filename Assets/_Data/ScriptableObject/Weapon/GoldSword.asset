@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Gold Sword
   damage: 5
+  criticalChance: 0.5
+  criticalMultiplier: 2

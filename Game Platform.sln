@@ -5,6 +5,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-firstpass", "Assembly-CSharp-firstpass.csproj", "{767BB016-75AA-02ED-624D-EE703520F123}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleText", "BattleText.csproj", "{F1417E87-D02F-409B-E1DC-3425FC0D5B38}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimatedBattleText.Example.Damage", "AnimatedBattleText.Example.Damage.csproj", "{262EA31A-546A-11C3-88A1-FF82687020DA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +23,14 @@ Global
 		{767BB016-75AA-02ED-624D-EE703520F123}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{767BB016-75AA-02ED-624D-EE703520F123}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{767BB016-75AA-02ED-624D-EE703520F123}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1417E87-D02F-409B-E1DC-3425FC0D5B38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1417E87-D02F-409B-E1DC-3425FC0D5B38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1417E87-D02F-409B-E1DC-3425FC0D5B38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1417E87-D02F-409B-E1DC-3425FC0D5B38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{262EA31A-546A-11C3-88A1-FF82687020DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{262EA31A-546A-11C3-88A1-FF82687020DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{262EA31A-546A-11C3-88A1-FF82687020DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{262EA31A-546A-11C3-88A1-FF82687020DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

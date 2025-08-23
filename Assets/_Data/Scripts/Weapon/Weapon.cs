@@ -7,11 +7,9 @@ public class Weapon : MonoBehaviour
     public WeaponData weaponData;
     private int currentDamage;
     public int Damage => weaponData.damage;
+    private bool isCrit;
 
-    private void Update()
-    {
-        CalculateDamage();
-    }
+
     private void CalculateDamage()
     {
         if (owner == null)
@@ -19,7 +17,12 @@ public class Weapon : MonoBehaviour
             Debug.LogWarning("Owner is not set for the weapon. Cannot calculate damage.");
             return;
         }
+        isCrit = Random.value < weaponData.criticalChance;
         currentDamage = Damage + owner.Damage;
+        if (isCrit)
+        {
+            currentDamage = Mathf.RoundToInt(currentDamage * weaponData.criticalMultiplier);
+        }
     }
 
     public void Init(Character characterOwner)
@@ -33,6 +36,7 @@ public class Weapon : MonoBehaviour
         Debug.Log($"{owner.characterData.characterName} is using {weaponData.weaponName} on {target?.GetType().Name}");
         if (target == null || owner == null) return;
         // Check if the target is within attack range
-        target.TakeDamage(currentDamage);
+        CalculateDamage();
+        target.TakeDamage(currentDamage, isCrit);
     }
 }

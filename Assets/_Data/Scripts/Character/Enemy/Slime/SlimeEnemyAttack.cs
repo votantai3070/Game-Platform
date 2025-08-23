@@ -7,11 +7,14 @@ public class SlimeEnemyAttack : MonoBehaviour
 
     [SerializeField] private float attackCooldown = 1f;
     private float lastAttackTime;
+    private bool isCrit = false;
 
     private void Awake()
     {
         slime = GetComponentInParent<Slime>();
     }
+
+
 
     private void Attack(IDamageable target)
     {
@@ -20,7 +23,7 @@ public class SlimeEnemyAttack : MonoBehaviour
             return;
         }
         Debug.Log($"{slime.characterData.characterName} is attacking {target?.GetType().Name}");
-        target.TakeDamage(slime.Damage);
+        target.TakeDamage(slime.Damage, isCrit);
         lastAttackTime = Time.time;
     }
 

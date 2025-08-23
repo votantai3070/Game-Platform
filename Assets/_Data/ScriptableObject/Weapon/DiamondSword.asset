@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Diamond Sword
   damage: 10
+  criticalChance: 0.7
+  criticalMultiplier: 2

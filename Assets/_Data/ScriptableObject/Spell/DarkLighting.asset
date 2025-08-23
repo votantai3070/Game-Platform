@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spellName: Dark Light
   damage: 10
+  criticalChance: 0.33
+  criticalMultiplier: 1.5

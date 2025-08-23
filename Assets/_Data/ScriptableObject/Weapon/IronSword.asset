@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Iron Sword
   damage: 2
+  criticalChance: 0.3
+  criticalMultiplier: 2

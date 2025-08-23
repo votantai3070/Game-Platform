@@ -102,6 +102,7 @@
     <Compile Include="Assets\_Data\Scripts\Character\Player\PlayerMovement.cs" />
     <Compile Include="Assets\_Data\Scripts\Interfaces\IItem.cs" />
     <Compile Include="Assets\_Data\Scripts\Character\Player\PlayerHeal.cs" />
+    <Compile Include="Assets\_Data\Scripts\DamagePopup.cs" />
     <Compile Include="Assets\_Data\Scripts\Character\Enemy\Slime\Slime.cs" />
     <Compile Include="Assets\_Data\Scripts\Spawner.cs" />
     <Compile Include="Assets\_Data\Scripts\Camera\CameraFollow.cs" />
@@ -114,6 +115,7 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile-2-Pass.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
     <None Include="Assets\Bringer Of Death\License.txt" />
+    <None Include="Assets\PixelBattleText\Resources\PixelBorder.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
@@ -1399,6 +1401,14 @@
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
       <Project>{767BB016-75AA-02ED-624D-EE703520F123}</Project>
       <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
+    <ProjectReference Include="AnimatedBattleText.Example.Damage.csproj">
+      <Project>{262EA31A-546A-11C3-88A1-FF82687020DA}</Project>
+      <Name>AnimatedBattleText.Example.Damage</Name>
+    </ProjectReference>
+    <ProjectReference Include="BattleText.csproj">
+      <Project>{F1417E87-D02F-409B-E1DC-3425FC0D5B38}</Project>
+      <Name>BattleText</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

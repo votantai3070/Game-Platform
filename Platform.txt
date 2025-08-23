@@ -3,24 +3,29 @@
 Player
 
 Thêm tấn công đặc biệt/skill (ví dụ: đánh xoáy, bắn đạn, ulti khi đủ mana).
+- Có thêm critical (chance và multip damage) cho các vũ khí và spell.
 
-Máu, mana, stamina (dùng để quản lý tấn công, né, dash…).
+Máu, mana, stamina (dùng để quản lý tấn công, né, dash…). V
+- xong stamina, health, stamina quản lí dash 
 
-Item pickup (hồi máu, hồi mana, tăng sức mạnh tạm thời).
+Item pickup (hồi máu, hồi mana, tăng sức mạnh tạm thời). (có item hồi máu)
 
-UI hiển thị: thanh máu, thanh mana, số mạng, số coin/point.
+UI hiển thị: thanh máu, thanh mana, số mạng, số coin/point. 
+- Có thanh máu, stamina
 
 Enemy
 
 Có nhiều loại enemy khác nhau (bay, đánh xa, đánh gần, mạnh hơn bình thường).
 
-Drop item khi chết (máu, coin, exp…).
+Drop item khi chết (máu, coin, exp…). 
+- quái drop bình máu khi chết
 
 Boss
 
-Thêm nhiều phase (khi còn 50% HP thì đổi skill, tốc độ hoặc pattern).
+Thêm nhiều phase (khi còn 50% HP thì đổi skill, tốc độ hoặc pattern). X
 
 Skill phép đa dạng hơn (AOE, bắn nhiều tia, tạo minion…).
+- Boss có dùng spell và tạo minions
 
 🗺️ Hệ thống & môi trường
 
@@ -32,7 +37,7 @@ Cửa, checkpoint hoặc nhiều màn chơi khác nhau.
 
 Camera
 
-Camera follow mượt + giới hạn trong map/boss room.
+Camera follow mượt + giới hạn trong map/boss room. V
 
 🧩 Hệ thống mở rộng
 
