@@ -33,7 +33,6 @@ public class PlayerAttack : MonoBehaviour
     private void Attack(IDamageable target)
     {
         if (weapon == null) return;
-        Debug.Log($"Attacking {target?.GetType().Name} with weapon: {weapon?.weaponData.weaponName}");
         weapon.UseWeapon(target);
     }
 

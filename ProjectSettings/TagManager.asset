@@ -48,8 +48,17 @@ TagManager:
   - name: BackGround
     uniqueID: 1291460213
     locked: 0
+  - name: ForeGround
+    uniqueID: 2587652549
+    locked: 0
   - name: Ground
     uniqueID: 2922912759
+    locked: 0
+  - name: Portal
+    uniqueID: 3075693127
+    locked: 0
+  - name: Trap
+    uniqueID: 1503861845
     locked: 0
   - name: Item
     uniqueID: 1429195889

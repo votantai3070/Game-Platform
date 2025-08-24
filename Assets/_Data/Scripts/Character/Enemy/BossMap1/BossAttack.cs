@@ -49,15 +49,12 @@ public class BossAttack : Character
             case 1:
                 if (!isAttacking)
                     StartCoroutine(NormalAttack());
-                Debug.Log("Normal Attack");
                 break;
             case 2:
                 if (!isAttackingSpelled) StartCoroutine(SpellAttack());
-                Debug.Log("Spell Attack");
                 break;
             case 3:
                 if (!isMinionSpawned) StartCoroutine(CreateMinions());
-                Debug.Log("Create Minions");
                 break;
         }
     }
@@ -110,7 +107,6 @@ public class BossAttack : Character
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (capsuleCollider == null) return;
-        Debug.Log("OnTriggerEnter2D: " + collision.gameObject.name);
         if (collision.CompareTag("Player"))
         {
             if (collision.TryGetComponent<IDamageable>(out var damageable))
