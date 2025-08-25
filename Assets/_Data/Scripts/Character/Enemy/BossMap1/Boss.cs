@@ -40,42 +40,44 @@ public class Boss : Character
     protected override void Move(Vector2 direction)
     {
         Collider2D hit = Physics2D.OverlapCircle(detectedPoint.position, detectedRange, detectedLayer);
-        int random = Random.Range(1, 4);
-        if (hit != null)
-        {
-            float distance = Vector3.Distance(transform.position, target.position);
-            if (distance < 15f && distance > 10f)
-            {
-                if (!BossAttack.instance.isAttackingSpelled && random == 2)
-                {
-                    BossAttack.instance.attackIndex = random;
-                }
-            }
-            else if (distance <= 10f)
-            {
-                anim.SetFloat("isRunning", 0);
+        Debug.Log($"hit: {hit}");
 
-                if (!BossAttack.instance.isAttacking && !BossAttack.instance.isAttackingSpelled)
-                {
-                    BossAttack.instance.attackIndex = random; // 1: normal, 2: spell
-                }
-            }
-            else
-            {
-                anim.SetFloat("isRunning", 1f);
-
-                rb.linearVelocity = characterData.speed * (Vector3)direction;
-                BossAttack.instance.attackIndex = 0;
-            }
-        }
-        else
+        if (hit == null)
         {
             BossAttack.instance.attackIndex = 0;
             anim.SetFloat("isRunning", 0);
+            Flip(direction);
+            return;
+        }
+
+        float distance = Vector3.Distance(transform.position, target.position);
+
+        anim.SetFloat("isRunning", 0);
+
+        if (distance > 10f && distance < detectedRange)
+        {
+            anim.SetFloat("isRunning", 1f);
+            rb.linearVelocity = characterData.speed * (Vector3)direction;
+            BossAttack.instance.attackIndex = 0;
+        }
+        else
+        {
+            int random = Random.Range(1, 4);
+
+            if (distance <= 12f && distance > 8f && random == 2 && !BossAttack.instance.isAttackingSpelled)
+            {
+                BossAttack.instance.attackIndex = 2;
+            }
+            else if (distance <= 8f && !BossAttack.instance.isAttacking && !BossAttack.instance.isMinionSpawned)
+            {
+                if (random == 1 || random == 3)
+                    BossAttack.instance.attackIndex = random;
+            }
         }
 
         Flip(direction);
     }
+
 
     private void Flip(Vector2 direction)
     {

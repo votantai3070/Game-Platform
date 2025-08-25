@@ -22,7 +22,6 @@ public class SlimeEnemyAttack : MonoBehaviour
         {
             return;
         }
-        Debug.Log($"{slime.characterData.characterName} is attacking {target?.GetType().Name}");
         target.TakeDamage(slime.Damage, isCrit);
         lastAttackTime = Time.time;
     }
@@ -34,7 +33,6 @@ public class SlimeEnemyAttack : MonoBehaviour
         {
             if (collision.TryGetComponent<IDamageable>(out IDamageable damageable))
             {
-                Debug.Log($"{slime.characterData.characterName} detected {damageable} in range.");
                 Attack(damageable);
             }
         }
@@ -48,6 +46,4 @@ public class SlimeEnemyAttack : MonoBehaviour
             }
         }
     }
-
-
 }

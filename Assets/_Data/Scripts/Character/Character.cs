@@ -1,3 +1,4 @@
+﻿using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -45,6 +46,11 @@ public abstract class Character : MonoBehaviour, IDamageable, IHealth
 
     }
 
+    private void Update()
+    {
+        Debug.Log($"{gameObject.name} | Health: {CurrentHealth}");
+    }
+
     protected virtual void Move(Vector2 direction) { }
 
 
@@ -76,12 +82,14 @@ public abstract class Character : MonoBehaviour, IDamageable, IHealth
 
     public void Heal(int amount)
     {
-        CurrentHealth += amount;
+        CurrentHealth = Mathf.Clamp(CurrentHealth + amount, 0, characterData.maxHealth);
+
         if (characterHealthBar != null)
         {
-            characterHealthBar.value = CurrentHealth;
+            DOTween.Kill(characterHealthBar); // tránh conflict tween cũ
+            DOTween.To(() => characterHealthBar.value, x => characterHealthBar.value = x, CurrentHealth, 0.5f);
         }
-        CurrentHealth = Mathf.Clamp(CurrentHealth, 0, characterData.maxHealth);
+
     }
 
     protected abstract void Die();

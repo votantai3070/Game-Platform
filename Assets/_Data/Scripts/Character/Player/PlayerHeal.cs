@@ -3,12 +3,11 @@ using UnityEngine;
 public class PlayerHeal : MonoBehaviour
 {
     private HealthPotion healthPotion;
-    private Player player;
+    public Player player;
 
     private void Start()
     {
         healthPotion = FindAnyObjectByType<HealthPotion>();
-        player = GetComponentInParent<Player>();
     }
     private void Update()
     {

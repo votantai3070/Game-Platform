@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using UnityEngine;
 
@@ -11,8 +12,7 @@ public class HealthPotion : MonoBehaviour, IItem
     private void Start()
     {
         inventory = FindAnyObjectByType<Inventory>();
-        player = FindAnyObjectByType<Player>();
-
+        player = GameObject.Find("Player").GetComponent<Player>();
     }
 
     public void DropItem(Transform target)
@@ -49,14 +49,14 @@ public class HealthPotion : MonoBehaviour, IItem
 
     IEnumerator AnimationPotion(GameObject potion)
     {
-        Vector2 startPosition = potion.transform.position;
-        Vector2 endPosition = new Vector2(startPosition.x, startPosition.y + 0.5f);
+        //Vector2 startPosition = potion.transform.position;
+        //Vector2 endPosition = new Vector2(startPosition.x, startPosition.y + 0.5f);
         float elapsedTime = 0f;
         float duration = 0.5f;
         while (elapsedTime < duration)
         {
-            potion.transform.position = Vector2.Lerp(startPosition, endPosition, elapsedTime / duration);
             elapsedTime += Time.deltaTime;
+            potion.transform.DOMoveY(potion.transform.position.y + 0.2f, duration).SetEase(Ease.OutQuad);
             yield return null;
         }
     }

@@ -16,9 +16,9 @@ public class BossAttack : Character
     [HideInInspector] public int attackIndex;
     private Player player;
     private Transform target;
-    public GameObject minionPrefab;
-    private bool isMinionSpawned = false;
+    [HideInInspector] public bool isMinionSpawned = false;
     public Transform createMinionPoint;
+    private BossSpawnSlimePool bossSpawnSlimePool;
 
     private void Awake()
     {
@@ -31,11 +31,13 @@ public class BossAttack : Character
             target = player.transform;
         }
         capsuleCollider = GetComponent<CapsuleCollider2D>();
+        bossSpawnSlimePool = FindAnyObjectByType<BossSpawnSlimePool>();
     }
 
     private void Update()
     {
         HandleAttack();
+        Debug.Log("attackIndex: " + attackIndex);
     }
 
     private void HandleAttack()
@@ -51,10 +53,12 @@ public class BossAttack : Character
                     StartCoroutine(NormalAttack());
                 break;
             case 2:
-                if (!isAttackingSpelled) StartCoroutine(SpellAttack());
+                if (!isAttackingSpelled)
+                    StartCoroutine(SpellAttack());
                 break;
             case 3:
-                if (!isMinionSpawned) StartCoroutine(CreateMinions());
+                if (!isMinionSpawned)
+                    StartCoroutine(CreateMinions());
                 break;
         }
     }
@@ -92,7 +96,7 @@ public class BossAttack : Character
         {
             ani.SetBool("isAttackingSpell", true);
             ani.SetTrigger("isAttackSpell");
-            Instantiate(minionPrefab, createMinionPoint.position, Quaternion.identity);
+            bossSpawnSlimePool.GetSpawnMinions();
         }
         yield return new WaitForSeconds(attackDelay);
 

@@ -77,10 +77,12 @@
     <Compile Include="Assets\_Data\Scripts\ScriptableObject\CharacterData.cs" />
     <Compile Include="Assets\Anogame\MonsterGirls\MonsterGirlsCommon\Scripts\OverrideSprite.cs" />
     <Compile Include="Assets\_Data\Scripts\Character\Enemy\BossMap1\ResetAnimationBoss.cs" />
+    <Compile Include="Assets\_Data\Scripts\PoolObject\BossSpawnSlimePool.cs" />
     <Compile Include="Assets\_Data\Scripts\Weapon\Weapon.cs" />
     <Compile Include="Assets\Hero Knight - Pixel Art\Demo\Sensor_HeroKnight.cs" />
     <Compile Include="Assets\_Data\Scripts\ScriptableObject\WeaponData.cs" />
     <Compile Include="Assets\_Data\Scripts\InputManager.cs" />
+    <Compile Include="Assets\_Data\Scripts\TeleportFader.cs" />
     <Compile Include="Assets\_Data\Scripts\Character\Player\PlayerStamina.cs" />
     <Compile Include="Assets\_Data\Scripts\Character\Player\PlayerAttack.cs" />
     <Compile Include="Assets\_Data\Scripts\Character\Enemy\BossMap1\BossAttack.cs" />
