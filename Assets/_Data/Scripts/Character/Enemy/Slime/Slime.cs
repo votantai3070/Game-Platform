@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class Slime : Character
 {
     public HealthPotion healthPotion;
@@ -12,8 +14,12 @@ public class Slime : Character
 
     protected override void Die()
     {
+
         bossSpawnSlimePool.ReturnMinionToPool(gameObject);
-        healthPotion.DropItem(transform);
+        if (characterData)
+
+            if (Random.value <= characterData.dropRate)
+                healthPotion.DropItem(transform);
     }
 
 }

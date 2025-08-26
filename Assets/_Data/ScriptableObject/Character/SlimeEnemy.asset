@@ -18,5 +18,7 @@ MonoBehaviour:
   speed: 2
   stamina: 0
   dogdeStamina: 1000
+  blockedStamina: 0
   blockStamina: 0
   jumpStamina: 0
+  dropRate: 0.5

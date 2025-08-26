@@ -12,4 +12,5 @@ public class CharacterData : ScriptableObject
     public int blockedStamina;
     public int blockStamina;
     public int jumpStamina;
+    public float dropRate;
 }

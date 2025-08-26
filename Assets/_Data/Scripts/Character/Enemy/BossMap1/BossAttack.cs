@@ -37,7 +37,6 @@ public class BossAttack : Character
     private void Update()
     {
         HandleAttack();
-        Debug.Log("attackIndex: " + attackIndex);
     }
 
     private void HandleAttack()
@@ -115,7 +114,6 @@ public class BossAttack : Character
         {
             if (collision.TryGetComponent<IDamageable>(out var damageable))
             {
-                Debug.Log("damageable: " + damageable);
                 Attack(damageable);
             }
         }
