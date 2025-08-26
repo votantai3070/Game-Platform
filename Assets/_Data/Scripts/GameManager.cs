@@ -1,13 +1,42 @@
 ﻿using DG.Tweening;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour, IGameEvent
 {
-    public GameObject bossHealth;
-    private void Awake()
+    public void MainMenu()
     {
-        //bossHealth.SetActive(false);
+        SceneManager.LoadScene("MenuGame");
+    }
+
+    public void PauseGame()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void ResumeGame()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene("Map_1");
+    }
+
+    public void StopGame()
+    {
+        throw new System.NotImplementedException();
     }
 
     private void OnDestroy()

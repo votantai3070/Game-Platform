@@ -14,22 +14,17 @@ public class BossAttack : Character
     [HideInInspector] public bool isAttacking = false;
     [HideInInspector] public bool isAttackingSpelled = false;
     [HideInInspector] public int attackIndex;
-    private Player player;
-    private Transform target;
     [HideInInspector] public bool isMinionSpawned = false;
     public Transform createMinionPoint;
     private BossSpawnSlimePool bossSpawnSlimePool;
+    private Boss boss;
 
     private void Awake()
     {
         instance = this;
         ani = GetComponentInParent<Animator>();
-        bossWeapon.Init(Boss.instance);
-        player = FindAnyObjectByType<Player>();
-        if (player != null)
-        {
-            target = player.transform;
-        }
+        boss = GetComponentInParent<Boss>();
+        bossWeapon.Init(boss);
         capsuleCollider = GetComponent<CapsuleCollider2D>();
         bossSpawnSlimePool = FindAnyObjectByType<BossSpawnSlimePool>();
     }
@@ -102,9 +97,10 @@ public class BossAttack : Character
         isMinionSpawned = false;
     }
 
-    protected override void Attack(IDamageable target)
+    protected override void Attack(IDamageable t)
     {
-        bossWeapon.UseWeapon(target);
+        Debug.Log("Boss Attack");
+        bossWeapon.UseWeapon(t);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

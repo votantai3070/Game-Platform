@@ -56,6 +56,7 @@ public class HealthPotion : MonoBehaviour, IItem
         while (elapsedTime < duration)
         {
             elapsedTime += Time.deltaTime;
+            DOTween.Kill(potion);
             potion.transform.DOMoveY(potion.transform.position.y + 0.2f, duration).SetEase(Ease.OutQuad);
             yield return null;
         }

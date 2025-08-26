@@ -12,6 +12,7 @@ public class Weapon : MonoBehaviour
 
     private void CalculateDamage()
     {
+        Debug.Log("owner: " + owner);
         if (owner == null)
         {
             Debug.LogWarning("Owner is not set for the weapon. Cannot calculate damage.");
@@ -23,6 +24,7 @@ public class Weapon : MonoBehaviour
         {
             currentDamage = Mathf.RoundToInt(currentDamage * weaponData.criticalMultiplier);
         }
+        Debug.Log($"Calculated Damage: {currentDamage} (Crit: {isCrit})");
     }
 
     public void Init(Character characterOwner)
@@ -32,7 +34,9 @@ public class Weapon : MonoBehaviour
 
     public virtual void UseWeapon(IDamageable target)
     {
+        Debug.Log("target: " + target);
         if (target == null || owner == null) return;
+        Debug.Log("Using weapon on target.");
         CalculateDamage();
         target.TakeDamage(currentDamage, isCrit);
     }

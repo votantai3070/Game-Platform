@@ -92,6 +92,7 @@
     <Compile Include="Assets\Anogame\MonsterGirls\MonsterGirlsCommon\Scripts\DemoCharaAnimationPlayer.cs" />
     <Compile Include="Assets\_Data\Scripts\Spell\DarkSpell.cs" />
     <Compile Include="Assets\_Data\Scripts\PickupUI.cs" />
+    <Compile Include="Assets\_Data\Scripts\Interfaces\IGameEvent.cs" />
     <Compile Include="Assets\Hero Knight - Pixel Art\ColorSwap\ColorSwap_HeroKnight.cs" />
     <Compile Include="Assets\_Data\Scripts\ScriptableObject\ItemData.cs" />
     <Compile Include="Assets\_Data\Scripts\Character\Character.cs" />

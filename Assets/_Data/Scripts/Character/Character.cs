@@ -86,7 +86,7 @@ public abstract class Character : MonoBehaviour, IDamageable, IHealth
 
         if (characterHealthBar != null)
         {
-            DOTween.Kill(characterHealthBar); // tránh conflict tween cũ
+            DOTween.Kill(characterHealthBar);
             DOTween.To(() => characterHealthBar.value, x => characterHealthBar.value = x, CurrentHealth, 0.5f);
         }
 
