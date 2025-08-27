@@ -25,9 +25,9 @@ public abstract class Character : MonoBehaviour, IDamageable, IHealth
 
     protected virtual void Start()
     {
+        Debug.Log($"Character {gameObject.name} Start method called.");
         if (characterData == null)
         {
-            Debug.LogError("CharacterData is not assigned for " + gameObject.name);
             return;
         }
 
@@ -36,6 +36,8 @@ public abstract class Character : MonoBehaviour, IDamageable, IHealth
         MaxHealth = characterData.maxHealth;
 
         CurrentHealth = MaxHealth;
+
+        Debug.Log($"Character {gameObject.name} initialized with {CurrentHealth}/{MaxHealth} health.");
 
 
         if (characterHealthBar != null)

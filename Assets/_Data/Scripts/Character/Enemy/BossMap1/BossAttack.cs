@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class BossAttack : Character
+public class BossAttack : MonoBehaviour
 {
     [Header("Boss Attack Settings")]
     public static BossAttack instance;
@@ -97,7 +97,7 @@ public class BossAttack : Character
         isMinionSpawned = false;
     }
 
-    protected override void Attack(IDamageable t)
+    private void Attack(IDamageable t)
     {
         Debug.Log("Boss Attack");
         bossWeapon.UseWeapon(t);
@@ -121,10 +121,5 @@ public class BossAttack : Character
             Debug.Log("Player Blocked Enemy");
 
         }
-    }
-
-    protected override void Die()
-    {
-        throw new System.NotImplementedException();
     }
 }

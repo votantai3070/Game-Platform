@@ -1,36 +1,24 @@
 ﻿using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
-
 public class Boss : Character
 {
-    public static Boss instance;
-    protected Rigidbody2D rb;
-    private Animator anim;
-    private Player player;
-    private Transform detectedPoint;
+    public Rigidbody2D rb;
+    public Animator anim;
+    public Player player;
+    public Transform detectedPoint;
     private Transform target;
-    private CapsuleCollider2D capsuleCollider;
-    private GameObject bossRoom;
-    protected float detectedRange = 15f;
+    public CapsuleCollider2D capsuleCollider;
+    public GameObject bossRoom;
+    private float detectedRange = 15f;
     public LayerMask detectedLayer;
 
-    private void Awake()
+    protected override void Start()
     {
-        instance = this;
-        detectedPoint = transform.Find("DetectedPoint");
-        player = FindAnyObjectByType<Player>();
-        rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
-        capsuleCollider = GetComponentInChildren<CapsuleCollider2D>();
+        base.Start();
         if (player != null)
         {
             target = player.transform;
         }
-        if (characterHealthBar == null)
-            characterHealthBar = GameObject.Find("BossHealthBar").GetComponent<Slider>();
-        bossRoom = GameObject.Find("BossRoomPoint");
     }
     private void Update()
     {

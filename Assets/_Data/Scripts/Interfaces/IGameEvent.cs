@@ -7,4 +7,5 @@ public interface IGameEvent
     void StopGame();
     void QuitGame();
     void MainMenu();
+    void GameOver();
 }

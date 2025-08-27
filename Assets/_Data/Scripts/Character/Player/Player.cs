@@ -25,7 +25,6 @@ public class Player : Character
 
     protected override void Die()
     {
-
         _animator.SetTrigger("isDead");
 
         PlayerMovement playerMovement = GetComponentInChildren<PlayerMovement>();
@@ -36,6 +35,7 @@ public class Player : Character
 
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         rb.linearVelocity = Vector2.zero;
-
+        GameManager gameManager = FindAnyObjectByType<GameManager>();
+        gameManager.GameOver();
     }
 }

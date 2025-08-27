@@ -1,15 +1,19 @@
 ﻿using DG.Tweening;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour, IGameEvent
 {
     public GameObject canvasSetting;
+    public GameObject canvasGameOver;
 
     private void Awake()
     {
         if (canvasSetting != null)
             canvasSetting.SetActive(false);
+        if (canvasGameOver != null)
+            canvasGameOver.SetActive(false);
     }
 
     private void Update()
@@ -36,7 +40,9 @@ public class GameManager : MonoBehaviour, IGameEvent
 
     public void RestartGame()
     {
+        gameObject.SetActive(false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1;
     }
 
     public void ResumeGame()
@@ -60,5 +66,17 @@ public class GameManager : MonoBehaviour, IGameEvent
     {
         DOTween.KillAll();
         DOTween.Clear(true);
+    }
+
+    public void GameOver()
+    {
+        StartCoroutine(PlayerDead());
+    }
+
+    IEnumerator PlayerDead()
+    {
+        yield return new WaitForSeconds(2f);
+        canvasGameOver.SetActive(true);
+        Time.timeScale = 0;
     }
 }
