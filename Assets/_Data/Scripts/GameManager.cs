@@ -4,14 +4,29 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour, IGameEvent
 {
+    public GameObject canvasSetting;
+
+    private void Awake()
+    {
+        if (canvasSetting != null)
+            canvasSetting.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+            PauseGame();
+    }
+
     public void MainMenu()
     {
-        SceneManager.LoadScene("MenuGame");
+        SceneManager.LoadScene("Menu");
     }
 
     public void PauseGame()
     {
-        throw new System.NotImplementedException();
+        canvasSetting.SetActive(true);
+        Time.timeScale = 0;
     }
 
     public void QuitGame()
@@ -26,7 +41,8 @@ public class GameManager : MonoBehaviour, IGameEvent
 
     public void ResumeGame()
     {
-        throw new System.NotImplementedException();
+        canvasSetting.SetActive(false);
+        Time.timeScale = 1;
     }
 
     public void StartGame()
