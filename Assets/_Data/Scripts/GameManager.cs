@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour, IGameEvent
     public void StartGame()
     {
         SceneManager.LoadScene("Map_1");
+        Time.timeScale = 1;
     }
 
     public void StopGame()

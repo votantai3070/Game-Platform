@@ -8,7 +8,7 @@ public class Slime : Character
 
     protected override void Start()
     {
-        healthPotion = FindAnyObjectByType<HealthPotion>();
+         healthPotion = FindAnyObjectByType<HealthPotion>();
         bossSpawnSlimePool = FindAnyObjectByType<BossSpawnSlimePool>();
     }
 
